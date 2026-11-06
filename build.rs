@@ -31,6 +31,14 @@ fn build_and_link_libfuzzer() {
             println!("cargo:rerun-if-changed={}", source.display());
             build.file(source.to_str().unwrap());
         }
+        if std::env::var("CARGO_CFG_TARGET_OS").as_deref() == Ok("windows")
+            && std::env::var("CARGO_CFG_SANITIZE")
+                .unwrap_or_default()
+                .is_empty()
+        {
+            println!("cargo:rerun-if-changed=src/windows_coverage.cpp");
+            build.file("src/windows_coverage.cpp");
+        }
         build.cpp(true);
         build.std("c++17");
         build.force_frame_pointer(true);
