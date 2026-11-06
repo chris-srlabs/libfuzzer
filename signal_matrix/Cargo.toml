@@ -1,0 +1,12 @@
+[package]
+name = "signal-matrix"
+version = "0.0.0"
+edition = "2021"
+publish = false
+description = "Checks whether libFuzzer detects and saves crashes in fuzz_target! and fuzz! binaries"
+
+[dependencies]
+clap = { version = "4", features = ["derive"] }
+
+[target.'cfg(unix)'.dependencies]
+libc = "0.2"

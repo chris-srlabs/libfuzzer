@@ -44,6 +44,8 @@ members = [
   "./example_crossover/fuzz",
   "./example_init/fuzz",
   "./example_mutator/fuzz",
+  "./signal_matrix",
+  "./signal_matrix/harness",
 ]
 
 [dev-dependencies]
